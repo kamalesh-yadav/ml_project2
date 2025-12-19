@@ -22,4 +22,7 @@ BUILD DOCKER IMAGE
 ```
 docker build -t <image_name>:<tagname> .
 ```
+```
+python setup.py install
 
+```
