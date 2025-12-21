@@ -1,25 +1,28 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 from typing import List
 
-REQUIREMENT_FILE_NAME="requirements.txt"
+REQUIREMENT_FILE_NAME = "requirements.txt"
 
 
-
-
-def get_requirements_list()->List[str]:
+def get_requirements_list() -> List[str]:
     """
-    Description:This function is going to return the list of requirement mention in the requrement.txt
-    
-    return This function is going to return a list of libraries mention in 
-    requirement.txt
+    This function returns a list of requirements
+    excluding '-e .'
     """
     with open(REQUIREMENT_FILE_NAME) as requirement_file:
-       return requirement_file.readlines()
+        requirements = [
+            line.strip()
+            for line in requirement_file
+            if line.strip() != "-e ."
+        ]
+    return requirements
+
+
 setup(
-    Name="Housing - Predictor",
+    name="housing-predictor",
     version="0.0.1",
     author="kamalesh yadav",
     description="This is the first FSDS Nov batch Machine learning project",
-    packages=["housing"],
-    install_requires=get_requirements_list()
+    packages=find_packages(),
+    install_requires=get_requirements_list(),
 )
