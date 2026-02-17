@@ -59,6 +59,7 @@ class Configuration:
             return data_validation_config
         except Exception as e:
             raise HousingException(e,sys) from e
+        
     def get_data_transformation_config(self)-> DataTransformationConfig:
         pass
     def get_model_trainer_config(self)-> ModelTrainerConfig:
